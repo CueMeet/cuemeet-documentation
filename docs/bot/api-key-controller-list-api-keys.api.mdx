@@ -1,0 +1,73 @@
+---
+id: api-key-controller-list-api-keys
+title: "List API keys"
+description: "List API keys"
+sidebar_label: "List API keys"
+hide_title: true
+hide_table_of_contents: true
+api: eJylVU1v4zgM/SsCT7uA0vQzs+tbpp1DMANsMdNiDkWwYGw61qwtuRLd1gj83weU4jRtii52J4fYoqVH8vGR2oBrySMbZxcFZDBvzWfqL51l7+qa/N+1CZyMATS06LEhJh8gu1tq8HTfUeCPrugh28Sl8VRAxr4jDbmzTJblE7ZtbfLoaPojOCu2kFfUoLxx3xJk4FY/KGfx4yUsNhTkaxfIS3S7fYG9sWvQUDrfIEMGXWcK0FBQyL1pxQtksLhSrlRckRIE9Vi5QGp+vVD/UB8UOyXJwTDovcDvRm9LDWy4Fndfnjm4YgfDkI6E1tmQIjw9PpbHS/dyTAIYPcJ/JwS9xx40GKYm/DtR5n+QdGvNfbejRZmCLJvSkIdBg8WG3oJ8CXE1rh5IyQlVOh9p34IKUu4JmYo5vxthgUwTNg0d+BjjizjGWSW7AmPTCjo9tcZT+GX0iPMGvgnzXNLbg185VxPaA6jvFXFFL/JXJihM5wcNNQa+Db9AxfeK7Av4RwxKUEXmRdTzqNykWhHigqmJyh00nL+l1o9YqG07JwhcS5NvIaQdXlH2/qRoiCsnE6V1IQoVuYIMptia6cOJPCbSE9PYghoC+Yc0VTbQ+Roy2LTesctdPWTT6SZ9v/X1cEDHZRfYNSrtULdfv4CGB/QGV3XqihFI3sl2jWRVMbeg4yOk3ErsauE9mV47ualIjTgyOboQa7kLK/E5YmBrjugJm7amo9w1B2ifLJNXvev8XtjKebW4VlgUnkJQvz0arlzHO7e/S/mW4jPvvOH+mwyLlCGmGu3NjWTQYMRdRViQh7Gd4WmypT8WWobP1+c5/inFvT934azEPy7K2fnk4sPJh8n5xex0sjor88lp/ufsrJzNsMRZbBNbuhjFVn6XHeXoCxHqmy0nc6JBi2tj12rlOCQLEYvBU+58YexayiHqSAdPjo63kxRzaSHJQUTWYJyh2xznrVGfqVfPAo3TXm3tBxXeUcf0xNO2RmMloy6VNqn3TniVWE5Aw6hg0BA1vNRQidSzO9hsVhhIxDqI+b4j36f7ctSlrAY9FkZEL9XI4DLdD5MbiUW2110q56u7YtDjiXmeU8vv7l3udeP1X99uQMNqe2E3rpAzHh9Bx/8MQIOLnERlRdsGarTrDteyN2HK7yeTX9Jj
+sidebar_class_name: "post api-method"
+info_path: docs/openapi/cuecard-api
+custom_edit_url: null
+displayed_sidebar: pageSidebar
+
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List API keys"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/api/v1/api-keys/list"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+List API keys
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={{"required":true,"content":{"application/json":{"schema":{"type":"object","properties":{"userId":{"type":"string","format":"uuid","description":"ID of the user whose API keys to list"}},"required":["userId"],"title":"ListApiKeysDto"}}}}}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"List of API keys","content":{"application/json":{"schema":{"type":"array","items":{"type":"object","properties":{"id":{"type":"string","format":"uuid","description":"Unique API key identifier"},"name":{"type":"string","description":"Descriptive name for the API key"},"createdAt":{"type":"string","format":"date-time","description":"API key creation timestamp"},"expiresAt":{"type":"string","format":"date-time","description":"API key expiration timestamp"},"isActive":{"type":"boolean","description":"Whether the API key is active"},"lastUsedAt":{"type":"string","format":"date-time","description":"When the API key was last used"}},"title":"ApiKeyListItem"}}}}},"400":{"description":"Bad request"}}}
+>
+  
+</StatusCodes>
+
+
+      

@@ -1,0 +1,73 @@
+---
+id: api-key-controller-revoke-api-key
+title: "Revoke API key"
+description: "Revoke API key"
+sidebar_label: "Revoke API key"
+hide_title: true
+hide_table_of_contents: true
+api: eJyFVE1P3DAQ/SvWnEAy7FJxyg3RPazggCic0KryxrMbg2Mbe7wlivLfq4kToGyr5mJnPB9v5j27Bx8wKjLerTVUcBXMDXbX3lH01mL8GfHgX7CYQUJQUbVIGBNUTz041SJUYDRIiPiaTUQNFcWMEoyDCoKiBiSkusFWQdUDdYEjEkXj9iBh52OrCCrI2WgYhg0nSsG7hIn9vy2XvGhMdTSBcTLKu7V4wU4UcFqkXNeY0i5byyBr7wgdcZwKwZp67G/xnDi4Pwbjt89YE3cXeRpkSukp6yfHrfcWlQMJ+KbaYLH0OoyfhMvl5b+xOk9i57PjJiWQ2vMEp3nDRn6N+g8PLVLjmTCNFglHZqiBChYqmMXhgpezF+zSojd6YAYwHmbWcrRQQR+iJ197O1SLRV/OH6Nl5z+xXOdEvhXFQzze34KEg4pGbW0Z1JyI9+hyy401RAHkuKTS3k5ly0QX09ciDw2KOY8gL3JCGGbYj9GWwc45VDDnEwXntW+Psq0cYRSdz/ETbOGjWN8JpXXElMTJL0ONz/Re9hSGUX8J6xwNdT9YJ6VDVeb+oQQ1EzGqvEGlMYKc78Pb2TT+kWvjdn4MNcSKgeuMtYpaXN2tj4CzWnY+ilY5tTduL7aeUrEgEhsi1j5q4/Y8Q6a0BF6cLyflq5qVz4WDT9SqUfMTsKtgxA124kNY0x0S08lXQO8NE77RIlhlHNOSCyFFc088DQZzARJm3YGEymhmvvGJ2KnvtyohK2xg82vG2EH1tPkQ0yhObRLvNVQ7ZRMe4Xm/3HByP704pwLk33HObLlu1KzN/AcSmJrx2Ro2g5zp4+rl4KquMdCnkKNnhHXyfge/r25XDysYht/0QtEj
+sidebar_class_name: "delete api-method"
+info_path: docs/openapi/cuecard-api
+custom_edit_url: null
+displayed_sidebar: pageSidebar
+
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Revoke API key"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"delete"}
+  path={"/api/v1/api-keys/{id}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Revoke API key
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+  children={"Request"}
+>
+</Heading>
+
+<ParamsDetails
+  parameters={[{"name":"id","required":true,"in":"path","schema":{"type":"string","format":"uuid"}}]}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  title={"Body"}
+  body={undefined}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  id={undefined}
+  label={undefined}
+  responses={{"200":{"description":"API key revoked successfully","content":{"application/json":{"schema":{"type":"object","properties":{"success":{"type":"boolean","example":true}}}}}},"404":{"description":"API key not found"}}}
+>
+  
+</StatusCodes>
+
+
+      
