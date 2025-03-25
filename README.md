@@ -6,6 +6,18 @@ This directory contains the documentation website built using [Docusaurus](https
 
 ## Getting Started
 
+To work with the documentation locally using Docker, you'll docker or compatible tool installed on your system.
+
+1. Install dependencies:
+```bash
+docker build -t cue-docs .
+```
+2. Start the development server:
+```bash
+docker run -p 3000:3000 cue-docs
+```
+
+
 To work with the documentation locally, you'll need Node.js installed on your system.
 
 1. Install dependencies:
