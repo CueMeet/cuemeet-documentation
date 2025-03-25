@@ -33,7 +33,7 @@ cd Meeting-Bots-Control-Panel
 # Application
 PORT=4000
 NODE_ENV=development
-
+CORS_ALLOWED_ORIGINS=*
 
 # Database
 DB_HOST=pg-db
