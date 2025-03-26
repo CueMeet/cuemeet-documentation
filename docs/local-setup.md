@@ -7,17 +7,20 @@ displayed_sidebar: pageSidebar
 
 This guide walks you through setting up Cuemeet locally for development and testing purposes.
 
+
 ## Prerequisites
 
 Before you begin, make sure you have the following installed:
-- Docker and Docker Compose
-- Git
+
+- [Git](https://git-scm.com/downloads)
+- [Docker and Docker Compose ](https://docs.docker.com/get-started/get-docker/)
 - Node.js (v14 or later) - Optional for local development without Docker
 - Python 3.10 or higher - Optional for local development without Docker
 
 ## Installation Steps
 
 1. **Clone the repository**
+
 ```bash
 git clone https://github.com/CueMeet/Meeting-Bots-Control-Panel.git
 cd Meeting-Bots-Control-Panel
@@ -73,8 +76,9 @@ MEETING_BOT_RETRY_COUNT=2
 
 
 # Worker Backend gRPC URL
-WORKER_BACKEND_GRPC_URL=grpc-worker:5500
+WORKER_BACKEND_GRPC_URL=worker-grpc
 ```
+
 </details>
 
 <details>
@@ -122,6 +126,7 @@ HIGHLIGHT_ENVIRONMENT_NAME=""
 ## ASSEMBLY AI
 ASSEMBLY_AI_API_KEY=""
 ```
+
 </details>
 
 3. **Docker Compose Configuration**
@@ -221,6 +226,7 @@ volumes:
   postgres_data:
     driver: local
 ```
+
 </details>
 
 4. **Start the Services**
@@ -232,48 +238,51 @@ docker compose up -d
 # Check service status
 docker compose ps
 
-# Stop the service 
+# Stop the service
 docker compose down
 ```
 
 The services will be available at:
+
 - Backend API: `http://localhost:4000`
 - Worker API: `http://localhost:8000`
-- Worker gRPC: `localhost:5500`
-- PostgreSQL: `localhost:5432`
-- Redis: `localhost:6379`
+- Worker gRPC: `worker-grpc:5500` (internal only — accessible via Docker Compose network)
+- PostgreSQL: `pg-db:5432` (internal only — accessible via Docker Compose network)
+- Redis: `redis:6379` (internal only — accessible via Docker Compose network)
 
-<!-- ## Database Migrations
+## Database Migrations
+
+For the Backend API(Nest.js)
+
+- Automatic Migrations are configured
 
 For the Worker API (Django):
+
 ```bash
 # Run migrations
-docker-compose exec worker-api python manage.py migrate
-
-# Create a superuser (optional)
-docker-compose exec worker-api python manage.py createsuperuser
-``` -->
-
+python manage.py migrate
+```
 
 ## Troubleshooting
 
-
 ### Common Issues
 
-
 #### Container Startup Issues
-- Ensure all required ports (4000, 8000, 5432, 6379) are available
+
+- Ensure all required ports (4000, 8000) are available
 - Check if Docker daemon is running
 - Verify environment variables are set correctly
 
 #### Database Connection Issues
+
 - Ensure PostgreSQL container is running: `docker-compose ps`
 - Check logs: `docker-compose logs pg-db`
 - Verify database credentials in both .env files
 
 #### Service Dependencies
+
 - Backend API must be running for Worker API to function properly
-- Check service logs: 
+- Check service logs:
   ```bash
   docker-compose logs backend-api
   docker-compose logs worker-api
@@ -282,6 +291,7 @@ docker-compose exec worker-api python manage.py createsuperuser
 ## Next Steps
 
 Once you have your local setup working:
+
 - Proceed to [AWS Setup](/docs/aws-setup) for production deployment
 - Explore the [API Documentation](./bot/api-info)
 - Configure your [Bot Settings](./meeting-bots)

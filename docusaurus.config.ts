@@ -9,13 +9,15 @@ import type * as OpenApiPlugin from "docusaurus-plugin-openapi-docs";
 const config: Config = {
   title: "CueMeet",
   tagline: "Only OpenSource Meeting Bot You Can't Recall",
-  url: "https://cuemeet.ai",
+  url: "https://docs.cuemeet.ai",
   baseUrl: "/",
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
-  organizationName: "cuemeet.ai",
-  projectName: "CueMeet-Meeting-Bots-Control-Panel",
+  organizationName: "CueMeet",
+  projectName: "cuemeet-documentation",
+  deploymentBranch: "main",
+  githubHost: "github.com",
 
   presets: [
     [
@@ -49,8 +51,6 @@ const config: Config = {
           alt: "CueMeet Logo",
           src: "img/logo.png",
         },
-        items: [
-        ],
       },
       footer: {
         style: "dark",
@@ -73,7 +73,7 @@ const config: Config = {
             items: [
               {
                 label: "Discord",
-                href: "https://discordapp.com/invite/docusaurus",
+                href: "https://discord.gg/55FbAHA9",
               },
               {
                 label: "Twitter",
@@ -204,6 +204,24 @@ const config: Config = {
           logoClass: "rust",
         },
       ],
+      // algolia: {
+      //   // The application ID provided by Algolia
+      //   appId: 'YOUR_APP_ID',
+  
+      //   // Public API key: it is safe to commit it
+      //   apiKey: 'YOUR_SEARCH_API_KEY',
+
+      //   indexName: 'YOUR_INDEX_NAME',
+
+      //   contextualSearch: true,
+      //   replaceSearchResultPathname: {
+      //     from: '/docs/',
+      //     to: '/',
+      //   },
+      //   searchParameters: {},
+      //   searchPagePath: 'search',
+      //   insights: false,
+      // },
     } satisfies Preset.ThemeConfig,
 
   plugins: [
@@ -228,7 +246,17 @@ const config: Config = {
     ],
   ],
 
-  themes: ["docusaurus-theme-openapi-docs"],
+  themes: [
+    "docusaurus-theme-openapi-docs",
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      /** @type {import("@easyops-cn/docusaurus-search-local").PluginOptions} */
+      ({
+        hashed: true,
+        language: ["en"],
+      }),
+    ],
+  ],
 };
 
 export default async function createConfig() {

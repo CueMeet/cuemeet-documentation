@@ -1,0 +1,33 @@
+---
+sidebar_position: 3
+displayed_sidebar: pageSidebar
+---
+
+# System Design Diagram
+
+Below is a diagram of the system architecture for CueMeet and Meeting Bots Infrastructure and inner workings.
+
+<iframe
+  src="https://link.excalidraw.com/readonly/0e3OtfFjgy0qEIXckCkH"
+  width="100%"
+  height="600"
+  style={{ border: "none" }}
+/>
+
+<br /><br />
+
+This architecture diagram illustrates an on-demand meeting bot system deployed on Amazon Web Services (AWS). It integrates several cloud-native and backend technologies to manage the lifecycle of meeting bots, from task orchestration to containerized execution and error-handling mechanisms. Let’s break this down in digestible chunks.
+
+🧠 Core Workflow
+
+At the heart of the system lies a Control Backend, built with BullMQ (a Redis-based task queue) and a reactive framework (likely NestJS, judging by the pink logo). This backend schedules and manages bot jobs, using AWS SDK to dynamically spin up containers in AWS Fargate a serverless compute engine for containers. These containers run the MeetingBot, likely a Python-based automation tool, utilizing Selenium for browser control.
+
+🛠️ Execution & Persistence
+
+When a bot job is dispatched, Fargate pulls the required Docker image from Amazon ECR (Elastic Container Registry). These bots, upon execution, may generate artifacts (e.g., screenshots, logs) that are uploaded to Amazon S3. This decouples the data from the execution lifecycle and ensures durability. Meanwhile, the Worker Backend (built on Django and powered by Celery) interacts with the Control Backend using gRPC. It’s likely responsible for long-running jobs, failure recovery, and scheduling. Redis and PostgreSQL back these services with fast in-memory caching and persistent state, respectively.
+
+🚨 Failure Handling & Observability
+
+In the event of issues like failure to publish events or data corruption notifications are sent to an SNS Topic (Simple Notification Service). To ensure reliability, the SNS topic is paired with a Dead Letter Queue (DLQ) via SQS (Simple Queue Service), catching unprocessed or failed messages for further inspection or reprocessing.
+
+CloudWatch (not shown here but implied in AWS architecture) is typically used to monitor ECS logs and application-level metrics, aiding in debugging and performance optimization.

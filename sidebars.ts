@@ -3,7 +3,16 @@ import type { SidebarsConfig } from "@docusaurus/plugin-content-docs";
 
 const sidebars: SidebarsConfig = {
   pageSidebar: [
-    {type: "doc", id: "introduction", label: "Introduction"},
+    {
+      type: "category",
+      label: "Introduction",
+      collapsible: true,
+      collapsed: false,
+      items: [
+        {type: "doc", id: "introduction", label: "Introduction to CueMeet"},
+        {type: "doc", id: "system-architecture", label: "System Architecture"},
+      ],
+    },
     {
       type: "category",
       label: "Setup Guides",
@@ -37,6 +46,7 @@ const sidebars: SidebarsConfig = {
       collapsible: true,
       collapsed: false,
       items: [
+        {type: "doc", id: "meeting-bots", label: "Overview"},
         {type: "doc", id: "google-bot", label: "Google Bot"},
         {type: "doc", id: "zoom-bot", label: "Zoom Bot"},
         {type: "doc", id: "microsoft-teams-bot", label: "Microsoft Teams Bot"},

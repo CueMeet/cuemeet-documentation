@@ -7,9 +7,45 @@ displayed_sidebar: pageSidebar
 
 This page provides documentation for our API, including setup instructions and control panel components.
 
-👉 **[Read the Introduction](./docs/introduction)**
+## Introduction
 
-## Getting Started
+<div className="container">
+  <div className="row">
+    <div className="col col--6 margin-bottom--lg">
+      <div className="card">
+        <div className="card__header">
+          <h3>What is CueMeet?</h3>
+        </div>
+        <div className="card__body">
+          <p>
+            Introduction to CueMeet and documentation
+          </p>
+        </div>
+        <div className="card__footer">
+          <a href="/docs/introduction" className="button button--primary button--block">Learn More</a>
+        </div>
+      </div>
+    </div>
+    <div className="col col--6 margin-bottom--lg">
+      <div className="card">
+        <div className="card__header">
+          <h3>System Architecture</h3>
+        </div>
+        <div className="card__body">
+          <p>
+            System architecture and internal workings
+          </p>
+        </div>
+        <div className="card__footer">
+          <a href="/docs/aws-setup" className="button button--primary button--block">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+## Getting Started with Control Panel
 
 <div className="container">
   <div className="row">
@@ -43,14 +79,7 @@ This page provides documentation for our API, including setup instructions and c
         </div>
       </div>
     </div>
-  </div>
-</div>
-
-## Control Panel
-
-<div className="container">
-  <div className="row">
-    <div className="col col--6 margin-bottom--lg">
+    <div className="col col--6 col--offset-3 margin-bottom--lg">
       <div className="card">
         <div className="card__header">
           <h3>REST Backend</h3>
@@ -62,21 +91,6 @@ This page provides documentation for our API, including setup instructions and c
         </div>
         <div className="card__footer">
           <a href="/docs/bot/api-info" className="button button--primary button--block">Learn More</a>
-        </div>
-      </div>
-    </div>
-    <div className="col col--6 margin-bottom--lg">
-      <div className="card">
-        <div className="card__header">
-          <h3>Worker</h3>
-        </div>
-        <div className="card__body">
-          <p>
-            Information about the worker processes, configuration, and management.
-          </p>
-        </div>
-        <div className="card__footer">
-          <a href="#" className="button button--primary button--block">Learn More</a>
         </div>
       </div>
     </div>

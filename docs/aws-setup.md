@@ -7,10 +7,10 @@ displayed_sidebar: pageSidebar
 
 ## Deployment of Meeting Bots using AWS CodePipeline and ECS (Fargate)
 
-### 1.0 Introduction
+### 1 Introduction
 This document outlines the process for deploying Google Meeting Bots using AWS CodePipeline and Amazon ECS (Fargate). We will leverage CodePipeline for continuous integration (CI), CodeBuild for building and pushing Docker images, and ECS on Fargate for running the bots. This setup allows for automated deployments and scalable infrastructure.
 
-### 2.0 Architecture Overview
+### 2 Architecture Overview
 The deployment architecture consists of the following components:
 - **Source Repository:** Contains the bot's source code and `buildspec.yml`.
 - **AWS CodePipeline:** Orchestrates the CI process, triggering CodeBuild on code commits.
@@ -19,13 +19,13 @@ The deployment architecture consists of the following components:
 - **Amazon ECS (Fargate):** Runs the bot containers.
 - **AWS SDK:** Used to dynamically create and manage ECS tasks.
 
-### 3.0 Prerequisites
+### 3 Prerequisites
 - An AWS account with appropriate permissions.
 - A source code repository (e.g., GitHub, CodeCommit).
 - Basic understanding of Docker and AWS services (CodePipeline, CodeBuild, ECR, ECS).
 - ECS Cluster. [Create ECS Cluster](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/create-cluster-console-v2.html)
 
-### 4.0 Code Repository Setup
+### 4 Code Repository Setup
 ### 4.1 Repository Structure:
 - Ensure your repository contains the bot's source code.
 - Place the `buildspec.yml` file in the root directory of the repository.
@@ -35,7 +35,7 @@ Modify the following variables to match your setup:
 - `REPOSITORY_NAME`
 - `ECR_REPO`
 
-### 5.0 AWS CodePipeline Setup
+### 5 AWS CodePipeline Setup
 ### 5.1 Create a New Pipeline:
 1. In the AWS CodePipeline console, create a new pipeline.
 2. **Source Stage:**
@@ -56,7 +56,7 @@ Modify the following variables to match your setup:
 
 > **Note:** Skip the Deploy Stage. This pipeline will only build the image. Deploying will be done with the AWS SDK.
 
-### 6.0 Create Amazon ECS Task Definition Using the AWS Management Console
+### 6 Create Amazon ECS Task Definition Using the AWS Management Console
 Follow these steps to create an ECS task definition:
 
 1. **Task Definition Name:** Enter `cuecard-meeting-bot-google`.
@@ -74,14 +74,16 @@ Follow these steps to create an ECS task definition:
      - Add `DEBUG`
      - Add `HIGHLIGHT_PROJECT_ID`
 
-### 7.0 Deployment Process
+### 7 Deployment Process
 1. **Code Commit:** Commit your code changes to the source repository.
 2. **CodePipeline Trigger:** CodePipeline automatically triggers the build process.
 3. **CodeBuild Build and Push:** CodeBuild builds the Docker image and pushes it to ECR.
 4. **ECS Task Creation:** Use the AWS SDK to run a new ECS task, with the correct environment variables.
 
-### 8.0 S3 Event Notification to SNS with DLQ
-### 8.1 Create S3 Bucket
+### 8 S3 Event Notification to [SNS with DLQ](https://docs.aws.amazon.com/sns/latest/dg/sns-dead-letter-queues.html)
+### 8.1 Create S3 Bucket 
+- Depending on your specific requirements, create an S3 bucket set to either private or public. Then, configure the appropriate CORS settings and access controls for bot integration.
+
 ### 8.2 Create SNS Topic:
 - In SNS, create a standard topic.
 - (Optional) Add subscriptions.
@@ -106,11 +108,11 @@ Follow these steps to create an ECS task definition:
 2. Verify notification delivery via SNS.
 3. **Simulate Failure:** If your SNS subscribers fail to process the message, verify the message is sent to the DLQ.
 
-### 9.0 Monitoring and Logging
+### 9 Monitoring and Logging
 - Use Amazon CloudWatch to monitor ECS task logs and metrics.
 - Implement application logging to track bot behavior.
 
-### 10.0 Security Considerations
+### 10 Security Considerations
 - Use IAM roles with least privilege for CodeBuild and ECS tasks.
 - Securely store environment variables using AWS Secrets Manager or Parameter Store.
 - Ensure that the ECS task security groups allow only the needed traffic.

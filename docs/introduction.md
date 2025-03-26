@@ -5,14 +5,17 @@ displayed_sidebar: pageSidebar
 
 # Introduction
 
-Welcome to CueMeet! This documentation will guide you through setting up and using the CueMeet platform effectively.
+## What is CueMeet.ai?
+CueMeet.ai is a pioneering open source API that enables developers to build intelligent meeting assistants. Our technology can be integrated into various meeting platforms to automate note-taking, action item tracking, summarization, and more - creating smarter, more productive meetings.
+
+This documentation will guide you through setting up and using the CueMeet platform effectively.
 
 ## Overview
 
-CueMeet is a powerful platform that enables you to [brief description of what CueMeet does]. This guide will walk you through:
+CueMeet is a powerful platform that offer a self-hostable, unified API solution for deploying intelligent meeting bots across platforms like Zoom, Google Meet, Microsoft Teams, and more. This guide will walk you through:
 
 1. **Local Setup** - Getting your development environment ready
-2. **AWS Setup** - Configuring your AWS infrastructure
+2. **AWS Setup** - Configuring your AWS infrastructure to run the meeting bots on demand
 3. **API Integration** - Using CueMeet's APIs for communication
 4. **Bot Configuration** - Setting up and customizing your bots
 
@@ -30,8 +33,8 @@ Each section contains detailed instructions and best practices to ensure a smoot
 ## Need Help?
 
 If you encounter any issues or have questions, please:
-- Check out our [GitHub Repository](https://github.com/CueMeet) for updates and contributions
-- Join our [Discord Server](https://discord.gg/VXc6cuFU) to connect with the community
+- Check out our [GitHub Organization](https://github.com/CueMeet) for updates and contributions
+- Join our [Discord Server](https://discord.gg/55FbAHA9) to connect with the community
 
 
 Let's get started with the [Local Setup](./local-setup)!
