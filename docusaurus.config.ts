@@ -11,7 +11,7 @@ const config: Config = {
   tagline: "Only OpenSource Meeting Bot You Can't Recall",
   url: "https://cuemeet.ai",
   baseUrl: "/",
-  onBrokenLinks: "ignore",
+  onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
   organizationName: "cuemeet.ai",

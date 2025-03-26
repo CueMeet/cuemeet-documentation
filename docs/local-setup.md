@@ -19,7 +19,7 @@ Before you begin, make sure you have the following installed:
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/CueCard-AI/Meeting-Bots-Control-Panel.git
+git clone https://github.com/CueMeet/Meeting-Bots-Control-Panel.git
 cd Meeting-Bots-Control-Panel
 ```
 
@@ -283,5 +283,5 @@ docker-compose exec worker-api python manage.py createsuperuser
 
 Once you have your local setup working:
 - Proceed to [AWS Setup](/docs/aws-setup) for production deployment
-- Explore the [API Documentation](/docs/api-info)
-- Configure your [Bot Settings](/docs/bot-config)
+- Explore the [API Documentation](./bot/api-info)
+- Configure your [Bot Settings](./meeting-bots)
