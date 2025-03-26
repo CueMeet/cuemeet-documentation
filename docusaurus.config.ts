@@ -16,8 +16,9 @@ const config: Config = {
   favicon: "img/favicon.ico",
   organizationName: "CueMeet",
   projectName: "cuemeet-documentation",
-  deploymentBranch: "main",
+  deploymentBranch: "gh-pages",
   githubHost: "github.com",
+  trailingSlash: false,
 
   presets: [
     [
