@@ -1,6 +1,13 @@
 # CueMeet Documentation
 
-
+[![License](https://img.shields.io/badge/license-GPL%203.0-blue.svg)](LICENSE)
+[![Docusaurus](https://img.shields.io/badge/Docusaurus-3.7.0-blue)](https://docusaurus.io/)
+[![Node.js](https://img.shields.io/badge/Node.js-20.11.0-green)](https://nodejs.org/)
+[![Docker](https://img.shields.io/badge/Docker-Available-blue)](https://www.docker.com/)
+[![OpenAPI](https://img.shields.io/badge/OpenAPI-4.3.4-orange)](https://www.openapis.org/)
+[![React](https://img.shields.io/badge/React-19.0.0-blue)](https://reactjs.org/)
+[![Yarn](https://img.shields.io/badge/Yarn-Package%20Manager-blue)](https://yarnpkg.com/)
+[![Community](https://img.shields.io/badge/Community-Supported-green)](SUPPORT.md)
 
 This directory contains the documentation website built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
 
