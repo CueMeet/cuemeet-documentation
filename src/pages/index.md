@@ -67,7 +67,7 @@ This page provides documentation for our API, including setup instructions and c
     <div className="col col--6 margin-bottom--lg">
       <div className="card">
         <div className="card__header">
-          <h3>Amazon AWS Configuration</h3>
+          <h3>AWS Meeting Bots Configuration</h3>
         </div>
         <div className="card__body">
           <p>

@@ -3,7 +3,13 @@ sidebar_position: 4
 displayed_sidebar: pageSidebar
 ---
 
-# Amazon AWS Configuration
+# Amazon AWS Meeting Bots Configuration
+
+### Prerequisites
+
+Before you begin, ensure the following tools are installed on your system:
+
+- [Amazon AWS](https://signin.aws.amazon.com/signup?request_type=register)
 
 ## Deployment of Meeting Bots using AWS CodePipeline and ECS (Fargate)
 

@@ -22,6 +22,40 @@ git clone https://github.com/CueMeet/cuemeet-teams-bot.git
 cd cuemeet-teams-bot
 ```
 
+### Project Folder Structure
+
+<details>
+<summary>Click to expand folder structure</summary>
+```
+.
+├── Dockerfile
+├── Makefile
+├── __init__.py
+├── app.py
+├── buildspec-staging.yml
+├── buildspec.yml
+├── config
+│   ├── __init__.py
+│   ├── __pycache__
+│   └── settings.py
+├── logger.py
+├── monitoring.py
+├── out
+├── poetry.lock
+├── pyproject.toml
+├── teams_meet
+│   ├── __init__.py
+│   ├── __pycache__
+│   ├── bot.py
+│   └── utils.py
+├── transcript_extension
+│   ├── background.js
+│   ├── content.js
+│   └── manifest.json
+└── utils.py
+```
+</details>
+
 ### 2. Configure Environment Variables
 
 Create a `.env` file and include the following configuration values:
@@ -31,7 +65,7 @@ Create a `.env` file and include the following configuration values:
 
 ```env
 DEBUG="True"
-HIGHLIGHT_PROJECT_ID="126875"
+HIGHLIGHT_PROJECT_ID="123456"
 ENVIRONMENT_NAME="DEV"
 ```
 

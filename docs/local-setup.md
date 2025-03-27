@@ -26,6 +26,48 @@ git clone https://github.com/CueMeet/Meeting-Bots-Control-Panel.git
 cd Meeting-Bots-Control-Panel
 ```
 
+### Project Folder Structure
+
+<details>
+<summary>Click to expand folder structure</summary>
+```
+.
+├── CODE_OF_CONDUCT.md
+├── CONTRIBUTING.md
+├── LICENSE
+├── README.md
+├── api-backend
+│   ├── Dockerfile
+│   ├── Makefile
+│   ├── README.md
+│   ├── nest-cli.json
+│   ├── package.json
+│   ├── src
+│   ├── test
+│   ├── tsconfig.build.json
+│   ├── tsconfig.json
+│   └── yarn.lock
+├── assets
+│   ├── banner.png
+│   └── cuemeet-logo.png
+├── docker-compose.yml
+├── pg-db
+│   └── init-multiple-databases.sql
+├── protos
+│   └── worker_backend.transcript_management
+└── worker-backend
+    ├── Dockerfile
+    ├── Makefile
+    ├── README.md
+    ├── api
+    ├── manage.py
+    ├── nltk
+    ├── poetry.lock
+    ├── pyproject.toml
+    └── worker_backend
+```
+</details>
+
 2. **Configure Environment Variables**
 
 <details>

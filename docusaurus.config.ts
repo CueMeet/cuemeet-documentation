@@ -96,7 +96,7 @@ const config: Config = {
             ],
           },
         ],
-        copyright: `Built with ❤️ by CueMeet, empowering open-source innovation! 🚀`,
+        copyright: `Built with ❤️ by <a href="https://cuecard.ai" target="_blank" rel="noopener noreferrer">CueCard.ai</a>, empowering open-source innovation! 🚀`,
       },
       prism: {
         additionalLanguages: [
