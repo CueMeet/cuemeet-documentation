@@ -10,7 +10,7 @@ const config: Config = {
   title: "CueMeet",
   tagline: "Only OpenSource Meeting Bot You Can't Recall",
   url: "https://docs.cuemeet.ai",
-  baseUrl: "/",
+  baseUrl: "/cuemeet-documentation/",
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",

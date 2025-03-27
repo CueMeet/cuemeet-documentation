@@ -22,7 +22,7 @@ This page provides documentation for our API, including setup instructions and c
           </p>
         </div>
         <div className="card__footer">
-          <a href="/docs/introduction" className="button button--primary button--block">Learn More</a>
+          <a href="/cuemeet-documentation/docs/introduction" className="button button--primary button--block">Learn More</a>
         </div>
       </div>
     </div>
@@ -37,7 +37,7 @@ This page provides documentation for our API, including setup instructions and c
           </p>
         </div>
         <div className="card__footer">
-          <a href="/docs/aws-setup" className="button button--primary button--block">Learn More</a>
+          <a href="/cuemeet-documentation/docs/aws-setup" className="button button--primary button--block">Learn More</a>
         </div>
       </div>
     </div>
@@ -60,7 +60,7 @@ This page provides documentation for our API, including setup instructions and c
           </p>
         </div>
         <div className="card__footer">
-          <a href="/docs/local-setup" className="button button--primary button--block">Learn More</a>
+          <a href="/cuemeet-documentation/docs/local-setup" className="button button--primary button--block">Learn More</a>
         </div>
       </div>
     </div>
@@ -75,7 +75,7 @@ This page provides documentation for our API, including setup instructions and c
           </p>
         </div>
         <div className="card__footer">
-          <a href="/docs/aws-setup" className="button button--primary button--block">Learn More</a>
+          <a href="/cuemeet-documentation/docs/aws-setup" className="button button--primary button--block">Learn More</a>
         </div>
       </div>
     </div>
@@ -90,7 +90,7 @@ This page provides documentation for our API, including setup instructions and c
           </p>
         </div>
         <div className="card__footer">
-          <a href="/docs/bot/api-info" className="button button--primary button--block">Learn More</a>
+          <a href="/cuemeet-documentation/docs/bot/api-info" className="button button--primary button--block">Learn More</a>
         </div>
       </div>
     </div>
@@ -113,7 +113,7 @@ This page provides documentation for our API, including setup instructions and c
           </p>
         </div>
         <div className="card__footer">
-          <a href="/docs/google-bot" className="button button--primary button--block">Learn More</a>
+          <a href="/cuemeet-documentation/docs/google-bot" className="button button--primary button--block">Learn More</a>
         </div>
       </div>
     </div>
@@ -128,7 +128,7 @@ This page provides documentation for our API, including setup instructions and c
           </p>
         </div>
         <div className="card__footer">
-          <a href="/docs/zoom-bot" className="button button--primary button--block">Learn More</a>
+          <a href="/cuemeet-documentation/docs/zoom-bot" className="button button--primary button--block">Learn More</a>
         </div>
       </div>
     </div>
@@ -143,7 +143,7 @@ This page provides documentation for our API, including setup instructions and c
           </p>
         </div>
         <div className="card__footer">
-          <a href="/docs/microsoft-teams-bot" className="button button--primary button--block">Learn More</a>
+          <a href="/cuemeet-documentation/docs/microsoft-teams-bot" className="button button--primary button--block">Learn More</a>
         </div>
       </div>
     </div>

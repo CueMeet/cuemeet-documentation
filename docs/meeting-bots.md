@@ -40,6 +40,6 @@ Whether you're working on the Google Meet, Zoom, or Teams integration, the found
 ---
 
 > Continue with the specific guides below to dive into the bot configuration for your platform of interest:
-> - [Google Bot](./google-bot.md)
-> - [Zoom Bot](./zoom-bot.md)
-> - [Microsoft Teams Bot](./microsoft-teams-bot.md)
+> - [Google Bot](/cuemeet-documentation/docs/google-bot)
+> - [Zoom Bot](/cuemeet-documentation/docs/zoom-bot)
+> - [Microsoft Teams Bot](/cuemeet-documentation/docs/microsoft-teams-bot)

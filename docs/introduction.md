@@ -23,10 +23,10 @@ CueMeet is a powerful platform that offer a self-hostable, unified API solution 
 
 We recommend following these steps in order:
 
-1. First, complete the [Local Setup](./local-setup) to prepare your development environment
-2. Then, follow the [AWS Setup Guide](./aws-setup) to configure your cloud infrastructure
-3. Learn how to integrate with the [CueMeet API](./bot/api-info) for seamless communication
-4. Finally, explore our [Bot Configuration Guide](./meeting-bots) to customize your bots
+1. First, complete the [Local Setup](/cuemeet-documentation/docs/local-setup) to prepare your development environment
+2. Then, follow the [AWS Setup Guide](/cuemeet-documentation/docs/aws-setup) to configure your cloud infrastructure
+3. Learn how to integrate with the [CueMeet API](/cuemeet-documentation/docs/bot/api-info) for seamless communication
+4. Finally, explore our [Bot Configuration Guide](/cuemeet-documentation/docs/meeting-bots) to customize your bots
 
 Each section contains detailed instructions and best practices to ensure a smooth implementation.
 

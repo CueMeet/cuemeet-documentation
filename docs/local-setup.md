@@ -292,6 +292,6 @@ python manage.py migrate
 
 Once you have your local setup working:
 
-- Proceed to [AWS Setup](/docs/aws-setup) for production deployment
-- Explore the [API Documentation](./bot/api-info)
-- Configure your [Bot Settings](./meeting-bots)
+- Proceed to [AWS Setup](/cuemeet-documentation/docs/aws-setup) for production deployment
+- Explore the [API Documentation](/cuemeet-documentation/docs/bot/api-info)
+- Configure your [Bot Settings](/cuemeet-documentation/docs/meeting-bots)
