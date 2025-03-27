@@ -1,0 +1,56 @@
+name: Check Documentation Build
+
+on:
+  pull_request:
+    branches:
+      - main
+      - gh-pages
+
+jobs:
+  check-build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 20
+
+      - name: Install yarn
+        run: npm install -g yarn
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build site
+        run: yarn build
+
+      - name: Check build output
+        run: |
+          if [ ! -d "build" ]; then
+            echo "Build directory not found. Build failed."
+            exit 1
+          fi
+          echo "Build completed successfully!"
+
+      - name: Comment PR
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const buildStatus = process.env.BUILD_STATUS === 'success' ? '✅' : '❌';
+            const message = `${buildStatus} Documentation build check completed.`;
+            
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: message
+            });
+        env:
+          BUILD_STATUS: ${{ job.status }} 
