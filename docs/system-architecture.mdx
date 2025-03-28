@@ -3,7 +3,9 @@ sidebar_position: 3
 displayed_sidebar: pageSidebar
 ---
 
-# System Design Diagram
+# System Architecture Overview
+
+## **System Design Diagram:**
 
 Below is a diagram of the system architecture for CueMeet and Meeting Bots Infrastructure and inner workings.
 
@@ -16,18 +18,119 @@ Below is a diagram of the system architecture for CueMeet and Meeting Bots Infra
 
 <br /><br />
 
-This architecture diagram illustrates an on-demand meeting bot system deployed on Amazon Web Services (AWS). It integrates several cloud-native and backend technologies to manage the lifecycle of meeting bots, from task orchestration to containerized execution and error-handling mechanisms. Let’s break this down in digestible chunks.
+The CueMeet.ai system is designed to automate and manage meeting bots across various platforms using a robust, cloud-native architecture on Amazon Web Services (AWS). This system orchestrates bot execution, data processing, and error handling to provide a seamless meeting automation experience.
 
-Core Workflow
+## **System Overview:**
 
-At the heart of the system lies a Control Backend, built with BullMQ (a Redis-based task queue) and a reactive framework (likely NestJS, judging by the pink logo). This backend schedules and manages bot jobs, using AWS SDK to dynamically spin up containers in AWS Fargate a serverless compute engine for containers. These containers run the MeetingBot, likely a Python-based automation tool, utilizing Selenium for browser control.
+**1. Control Backend (NestJS with BullMQ):**
 
-Execution & Persistence
+-   **Purpose:** Orchestrates the lifecycle of meeting bot jobs and directly manages ECS tasks.
+-   **Technology:** Built using NestJS with BullMQ for task queuing and scheduling.
+-   **Functionality:**
+    -      Exposes APIs for managing meeting bots (no dedicated frontend).
+    -      Schedules and manages bot jobs.
+    -      Uses the AWS SDK to directly interact with AWS ECS.
+    -      Stores meeting bot configuration and status in a PostgreSQL database.
+    -      Utilizes BullMQ for task queuing and processing.
+    -   Includes cron jobs for:
+        -   `syncTaskStatus`: Periodically checks the status of running ECS tasks and updates the database accordingly.
+        -   `initiateScheduledBot`: Triggers scheduled meeting bot tasks.
+    -   Manages the initiation and re-initiation of ECS tasks.
+-   **ECS Client Service:**
+    -      Manages ECS task lifecycle (run, stop, list, describe).
+    -      Handles error scenarios and retries.
+    -      Stores and retrieves ECS task information.
 
-When a bot job is dispatched, Fargate pulls the required Docker image from Amazon ECR (Elastic Container Registry). These bots, upon execution, may generate artifacts (e.g., screenshots, logs) that are uploaded to Amazon S3. This decouples the data from the execution lifecycle and ensures durability. Meanwhile, the Worker Backend (built on Django and powered by Celery) interacts with the Control Backend using gRPC. It’s likely responsible for long-running jobs, failure recovery, and scheduling. Redis and PostgreSQL back these services with fast in-memory caching and persistent state, respectively.
+**2. AWS Fargate (Container Execution):**
 
-Failure Handling & Observability
+-   **Purpose:** Provides a serverless compute platform for running Docker containers.
+-   **Functionality:**
+    -      Dynamically spins up containers based on requests from the Control Backend.
+    -      Executes the MeetingBots, which are containerized Python applications.
+    -      Scales automatically based on demand.
+-   **Amazon ECR (Elastic Container Registry):** Stores the Docker images required for the MeetingBots, ensuring efficient deployment and version control.
 
-In the event of issues like failure to publish events or data corruption notifications are sent to an SNS Topic (Simple Notification Service). To ensure reliability, the SNS topic is paired with a Dead Letter Queue (DLQ) via SQS (Simple Queue Service), catching unprocessed or failed messages for further inspection or reprocessing.
+**3. MeetingBots (Python with [Selenium](https://selenium-python.readthedocs.io/) and [FFmpeg](https://www.ffmpeg.org/)):**
 
-CloudWatch (not shown here but implied in AWS architecture) is typically used to monitor ECS logs and application-level metrics, aiding in debugging and performance optimization.
+-   **Purpose:** Automates meeting participation and data capture.
+-   **Technology:** Built using Python, [Selenium](https://selenium-python.readthedocs.io/) (for browser automation), and [FFmpeg](https://www.ffmpeg.org/) (for audio recording).
+-   **Functionality:**
+    -      Programmatically joins meetings on various platforms (Google Meet, Zoom, Microsoft Teams).
+    -      Captures high-quality audio recordings.
+    -      Extracts live captions and transcripts from the respective meeting platform.
+    -   Uploads the audio and transcript data in a combined `.tar` file and also standalone audio files (.opus) to Amazon S3 using presigned URLs.
+    -   The output files are stored in the `/out` directory inside the container.
+
+**4. Amazon S3 (Object Storage):**
+
+-   **Purpose:** Stores the meeting data (audio and transcript files).
+-   **Functionality:**
+    -      Receives uploaded data from the MeetingBots.
+    -      Provides durable and scalable storage.
+    -   Triggers SNS notifications on new file uploads.
+
+**5. Worker Backend (Django with Celery):**
+
+-   **Purpose:** Processes the uploaded meeting data, generating enhanced transcripts and performing post-processing tasks.
+-   **Technology:** Built using Django and Celery, a distributed task queue.
+-   **Functionality:**
+    -      Receives notifications from S3 via SNS.
+    -      Downloads the `.tar` file from S3.
+    -      Extracts audio and transcript files.
+    -      Uses [AssemblyAI](https://www.assemblyai.com/) for high-quality audio transcription.
+    -      Uses [NLTK](https://www.nltk.org/) and [rapidfuzz](https://github.com/rapidfuzz/RapidFuzz) for speaker reconciliation, combining AssemblyAI's audio transcription with the original meeting captions.
+    -      Stores the processed data in a PostgreSQL database.
+    -      Exposes a gRPC interface for communication with the Control Backend.
+    -      Provides a Celery task to retry failed transcriptions.
+-   **Post-Processing (Speaker Reconciliation):**
+    -      Uses [AssemblyAI](https://www.assemblyai.com/) for accurate audio transcription.
+    -      Aligns speaker names from the original meeting captions with the [AssemblyAI](https://www.assemblyai.com/) transcript.
+    -      Employs [NLTK](https://www.nltk.org/) for sentence tokenization and [rapidfuzz](https://github.com/rapidfuzz/RapidFuzz) for fuzzy string matching to reconcile speakers.
+    -      Handles timestamp alignment and text similarity comparisons.
+-   **Django Celery Tasks:**
+    -   `_transcript_generator_worker`:
+        -      Downloads the `.tar` file from S3.
+        -      Extracts audio and transcript files.
+        -      Transcribes the audio using [AssemblyAI](https://www.assemblyai.com/).
+        -   Reconciles speaker labels using the meeting metadata and NLTK/rapidfuzz.
+        -      Stores the transcription data in the PostgreSQL database.
+        -      Handles error logging and retries.
+    -   `_transcript_retry_cronjob`:
+        -      Periodically checks for failed transcription tasks.
+        -      Retries failed tasks, up to a maximum number of retries.
+        -      Sends failure notifications if retries are exhausted.
+-   **PostgreSQL Database:** Stores processed meeting data, including transcripts and metadata.
+-   **Redis Integration:** Celery uses Redis as a message broker and result backend.
+-   **gRPC Interface:** Enables communication between the Worker Backend and the Control Backend.
+-   **SNS/SQS Integration:** S3 triggers SNS notifications upon file upload, which are then queued in SQS for processing by the Worker Backend. This system includes a Dead Letter Queue (DLQ) for handling failed messages.
+
+**6. Error Monitoring and Observability:**
+
+-   **[highlight.io](https://www.highlight.io/):**
+    -      Monitors the system for errors and exceptions for both meeting bots and each of the control panel services.
+    -      Provides real-time alerts via Slack.
+    -      Captures detailed logs and error reports.
+-   **CloudWatch:**
+    -      Monitors ECS logs and application-level metrics.
+    -      Aids in debugging and performance optimization.
+
+### **Workflow Summary:**
+
+1.  A meeting bot task is scheduled or triggered via the Control Backend API.
+2.  The Control Backend uses the ECS Client Service to launch an ECS task in Fargate.
+3.  The MeetingBot joins the meeting, records audio, and extracts captions.
+4.  The MeetingBot uploads the data to S3.
+5.  S3 triggers an SNS notification.
+6.  The Worker Backend, via Celery, processes the uploaded data, transcribes it using [AssemblyAI](https://www.assemblyai.com/), and reconciles speakers using [NLTK](https://www.nltk.org/) and [rapidfuzz](https://github.com/rapidfuzz/RapidFuzz).
+7.  The processed data is stored in the PostgreSQL database.
+8.  [highlight.io](https://www.highlight.io/) and CloudWatch monitor the system for errors and performance issues.
+
+### **Key Technologies**
+
+* **Containerization:** Docker, AWS Fargate, Amazon ECR
+* **Orchestration:** NestJS, BullMQ, AWS SDK
+* **Automation:** Python, [Selenium](https://selenium-python.readthedocs.io/), [FFmpeg](https://www.ffmpeg.org/)
+* **Data Processing:** Django, Celery, [AssemblyAI](https://www.assemblyai.com/), [NLTK](https://www.nltk.org/)
+* **Storage:** Amazon S3, PostgreSQL, Redis
+* **Messaging:** Amazon SNS, Amazon SQS
+* **Monitoring:** [highlight.io](https://www.highlight.io/), AWS CloudWatch

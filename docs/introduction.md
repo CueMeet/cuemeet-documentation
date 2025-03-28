@@ -10,31 +10,31 @@ CueMeet.ai is a pioneering open source API that enables developers to build inte
 
 This documentation will guide you through setting up and using the CueMeet platform effectively.
 
-## Overview
+### **1. System Architecture**
 
-CueMeet is a powerful platform that offer a self-hostable, unified API solution for deploying intelligent meeting bots across platforms like Zoom, Google Meet, Microsoft Teams, and more. This guide will walk you through:
+To fully leverage CueMeet, first, go through our **[System Architecture Guide](/cuemeet-documentation/docs/system-architecture)**, where we break down:
+- **Core components** of the CueMeet ecosystem
+- **How the API communicates with meeting platforms**
+- **Data flow and processing pipeline**
+- **Security and scalability considerations**
 
-1. **Local Setup** - Getting your development environment ready
-2. **AWS Setup** - Configuring your AWS infrastructure to run the meeting bots on demand
-3. **API Integration** - Using CueMeet's APIs for communication
-4. **Bot Configuration** - Setting up and customizing your bots
+Understanding the architecture will help you make informed deployment decisions.
 
-## Getting Started
+### **2. Getting Started**
 
-We recommend following these steps in order:
+Once you have a clear understanding of the architecture, follow these steps:
 
-1. First, complete the [Local Setup](/cuemeet-documentation/docs/local-setup) to prepare your development environment
-2. Then, follow the [AWS Setup Guide](/cuemeet-documentation/docs/aws-setup) to configure your cloud infrastructure
-3. Learn how to integrate with the [CueMeet API](/cuemeet-documentation/docs/bot/api-info) for seamless communication
-4. Finally, explore our [Bot Configuration Guide](/cuemeet-documentation/docs/meeting-bots) to customize your bots
+1. **[AWS Setup Guide](/cuemeet-documentation/docs/aws-setup)** – Configure your cloud infrastructure to run meeting bots efficiently.
+2. **[Local Setup](/cuemeet-documentation/docs/local-setup)** – Prepare your development environment for customization.
+3. **[CueMeet API Integration](/cuemeet-documentation/docs/bot/api-info)** – Learn how to interact with CueMeet's APIs.
+4. **[Bot Configuration Guide](/cuemeet-documentation/docs/meeting-bots)** – Customize and improve bot functionalities.
 
 Each section contains detailed instructions and best practices to ensure a smooth implementation.
+
+---
 
 ## Need Help?
 
 If you encounter any issues or have questions, please:
 - Check out our [GitHub Organization](https://github.com/CueMeet) for updates and contributions
-- Join our [Discord Server](https://discord.gg/55FbAHA9) to connect with the community
-
-
-Let's get started with the [Local Setup](./local-setup)!
+- Join our [Discord Server](https://discord.gg/GjBS3EeMzp) to connect with the community

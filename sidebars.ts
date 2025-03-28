@@ -19,8 +19,8 @@ const sidebars: SidebarsConfig = {
       collapsible: true,
       collapsed: false,
       items: [
-        {type: "doc", id: "local-setup"},
         {type: "doc", id: "aws-setup"},
+        {type: "doc", id: "local-setup"},
       ],
     },
     {

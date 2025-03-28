@@ -3,7 +3,7 @@ sidebar_position: 3
 displayed_sidebar: pageSidebar
 ---
 
-# Local Setup
+# Control Panel Local Setup
 
 This guide walks you through setting up Cuemeet locally for development and testing purposes.
 
@@ -93,24 +93,24 @@ REDIS_HOST=redis
 REDIS_PORT=6379
 
 
-# AWS
-AWS_ACCESS_KEY=
-AWS_SECRET_KEY=
+# AWS (Must be filled in from AWS setup steps)
+AWS_ACCESS_KEY=  # Your AWS Access Key from AWS setup
+AWS_SECRET_KEY=  # Your AWS Secret Key from AWS setup
 
 ## S3
-AWS_BUCKET_REGION=
-AWS_MEETING_BOT_BUCKET_NAME=
+AWS_BUCKET_REGION=  # Your S3 bucket region
+AWS_MEETING_BOT_BUCKET_NAME=  # Your S3 bucket name
 
-## ECS
-AWS_ECS_CLUSTER_NAME=
-AWS_SECURITY_GROUP=
-AWS_VPS_SUBNET=
-ECS_TASK_DEFINITION_GOOGLE=
-ECS_CONTAINER_NAME_GOOGLE=
-ECS_TASK_DEFINITION_ZOOM=
-ECS_CONTAINER_NAME_ZOOM=
-ECS_TASK_DEFINITION_TEAMS=
-ECS_CONTAINER_NAME_TEAMS=
+## ECS (Must match the AWS configurations)
+AWS_ECS_CLUSTER_NAME=  # Your AWS ECS Cluster Name
+AWS_SECURITY_GROUP=  # Your AWS Security Group ID
+AWS_VPS_SUBNET=  # Your AWS Subnet ID
+ECS_TASK_DEFINITION_GOOGLE=  # Task Definition for Google Meet bots
+ECS_CONTAINER_NAME_GOOGLE=  # Container Name for Google Meet bots
+ECS_TASK_DEFINITION_ZOOM=  # Task Definition for Zoom bots
+ECS_CONTAINER_NAME_ZOOM=  # Container Name for Zoom bots
+ECS_TASK_DEFINITION_TEAMS=  # Task Definition for Microsoft Teams bots
+ECS_CONTAINER_NAME_TEAMS=  # Container Name for Microsoft Teams bots
 
 
 # Meeting Bot
@@ -120,7 +120,7 @@ MEETING_BOT_RETRY_COUNT=2
 # Worker Backend gRPC URL
 WORKER_BACKEND_GRPC_URL=worker-grpc
 ```
-
+⚠️ Important: The AWS-related environment variables must be obtained from the AWS Setup Guide. Complete the AWS setup first and copy the relevant values into this file.
 </details>
 
 <details>
@@ -151,12 +151,12 @@ REDIS_DB=2
 
 
 # AWS Configuration
-AWS_ACCESS_KEY_ID=
-AWS_SECRET_ACCESS_KEY=
+AWS_ACCESS_KEY_ID= # Your AWS Access Key from AWS setup
+AWS_SECRET_ACCESS_KEY= # Your AWS Access Key from AWS setup
 
 ## AWS S3
-AWS_REGION=
-AWS_STORAGE_BUCKET_NAME=
+AWS_REGION= # Your S3 bucket region
+AWS_STORAGE_BUCKET_NAME= # Your S3 bucket name
 
 _SIGNED_URL_EXPIRY_TIME=60
 
@@ -166,7 +166,7 @@ HIGHLIGHT_ENVIRONMENT_NAME=""
 
 
 ## ASSEMBLY AI
-ASSEMBLY_AI_API_KEY=""
+ASSEMBLY_AI_API_KEY="" # https://www.assemblyai.com API KEY 
 ```
 
 </details>

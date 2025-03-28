@@ -9,7 +9,7 @@ displayed_sidebar: pageSidebar
 
 Before you begin, ensure the following tools are installed on your system:
 
-- [Amazon AWS](https://signin.aws.amazon.com/signup?request_type=register)
+- [Amazon AWS Account](https://signin.aws.amazon.com/signup?request_type=register)
 
 ## Deployment of Meeting Bots using AWS CodePipeline and ECS (Fargate)
 
