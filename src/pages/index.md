@@ -37,7 +37,7 @@ This page provides documentation for our API, including setup instructions and c
           </p>
         </div>
         <div className="card__footer">
-          <a href="/cuemeet-documentation/docs/aws-setup" className="button button--primary button--block">Learn More</a>
+          <a href="/cuemeet-documentation/docs/system-architecture" className="button button--primary button--block">Learn More</a>
         </div>
       </div>
     </div>
