@@ -1,4 +1,22 @@
-# CueMeet Documentation
+<div align="center">
+  <img src="https://i.postimg.cc/FRLZLSSF/Banner.png" alt="Meeting Bots Control Panel Banner" />
+  <h1>CueMeet Documentation</h1>
+</div>
+
+---
+## Links to CueMeet Repositories
+
+You can explore all our repositories for additional tools and integrations:
+
+<ul>
+  <li><a href="https://github.com/CueMeet/cuemeet-documentation" target="_blank">CueMeet Docs</a></li>
+  <li><a href="https://github.com/CueMeet/Meeting-Bots-Control-Panel" target="_blank">CueMeet Control Panel</a></li>
+  <li><a href="https://github.com/CueMeet/cuemeet-google-bot" target="_blank">Google Meet Bot</a></li>
+    <li><a href="https://github.com/CueMeet/cuemeet-teams-bot" target="_blank">Ms Teams Bot</a></li>
+    <li><a href="https://github.com/CueMeet/cuemeet-zoom-bot" target="_blank">Zoom Meet Bot</a></li>
+</ul>
+
+---
 
 [![License](https://img.shields.io/badge/license-GPL%203.0-blue.svg)](LICENSE)
 [![Docusaurus](https://img.shields.io/badge/Docusaurus-3.7.0-blue)](https://docusaurus.io/)
@@ -47,15 +65,6 @@ This will start a local development server and open up a browser window. Most ch
 - `npm run deploy` - Deploy the site to production
 - `npm run clear` - Clear the local build cache
 
-### API Documentation
-
-The documentation includes API reference generated from OpenAPI specifications. Use these commands to manage API docs:
-
-- `npm run gen-api-docs` - Generate API documentation
-- `npm run clean-api-docs` - Remove generated API documentation
-- `npm run gen-api-docs:version` - Generate versioned API documentation
-- `npm run clean-api-docs:version` - Remove versioned API documentation
-
 ## Project Structure
 
 ```
@@ -67,13 +76,40 @@ documentation/
 └── docusaurus.config.js  # Docusaurus configuration
 ```
 
-## Contributing
+## 📚 Documentation
 
-When contributing to the documentation:
+Detailed documentation is available in the [docs](https://cuemeet.github.io/cuemeet-documentation/) directory:
 
-1. Create your working branch
-2. Make your changes
-3. Preview your changes locally using `npm start`
-4. Submit a pull request
+---
 
-For more detailed information about setting up the project locally, see [local-setup.md](docs/local-setup.md).
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guidelines](./CONTRIBUTING.md) for details.
+
+---
+
+## 🔐 Security
+
+Please refer to [SECURITY.md](./SECURITY.md) for information about reporting security vulnerabilities and best practices.
+
+---
+
+## 🆙 Upgrading
+
+For version compatibility and migration steps, see [UPGRADE.md](./UPGRADE.md).
+
+---
+
+## 📜 Code of Conduct
+
+We follow a standard of respectful communication and collaboration. Please review our [Code of Conduct](./CODE_OF_CONDUCT.md) before contributing.
+
+---
+
+## 📝 License
+
+This project is licensed under the [GNU General Public License v3.0 (GPL-3.0)](LICENSE)  — see the LICENSE file for details.
+
+<div align="center">
+  Made with ❤️ by CueCard.ai team
+</div>
