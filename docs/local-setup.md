@@ -118,7 +118,7 @@ MEETING_BOT_RETRY_COUNT=2
 
 
 # Worker Backend gRPC URL
-WORKER_BACKEND_GRPC_URL=worker-grpc
+WORKER_BACKEND_GRPC_URL=worker-grpc:5500
 ```
 ⚠️ Important: The AWS-related environment variables must be obtained from the AWS Setup Guide. Complete the AWS setup first and copy the relevant values into this file.
 </details>
@@ -203,23 +203,24 @@ services:
       - backend-api
 
   worker-grpc:
-    container_name: grpc_server
-    build:
-      context: ./worker-backend
-      dockerfile: Dockerfile
-    command: python manage.py grpcrunaioserver 0.0.0.0:5500 --max-workers 4
-    ports:
-      - "5500:5500"
+    container_name: grpc-server
+    restart: always
+    image: cuemeet:worker-backend
+    command: bash -c "echo 'Starting gRPC server...' && python manage.py grpcrunaioserver 0.0.0.0:5500 --max-workers 2 --verbosity 3"
+    # ports: ## Uncomment this if you want to expose grpc port
+    #   - "5500:5500"
     depends_on:
       - pg-db
       - redis
+      - backend-api
+      - worker-api
 
   redis:
     image: redis:alpine
     container_name: redis
     restart: always
-    ports:
-      - "6379:6379"
+    # ports: ## Uncomment this if you want to expose redis port
+    #   - "6379:6379"
 
   pg-db:
     image: postgres:16
@@ -228,8 +229,8 @@ services:
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ./pg-db/init-multiple-databases.sql:/docker-entrypoint-initdb.d/init-multiple-databases.sql
-    ports:
-      - "5432:5432"
+    # ports: ## Uncomment this if you want to expose postgres port
+    #   - "5432:5432"
     env_file:
       - ./pg-db/.db.env
 
