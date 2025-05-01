@@ -65,20 +65,125 @@ Modify the following variables to match your setup:
 ### 6 Create Amazon ECS Task Definition Using the AWS Management Console
 Follow these steps to create an ECS task definition:
 
-1. **Task Definition Name:** Enter `cuecard-meeting-bot-google`.
+1. **Task Definition Name:** Enter `cuemeet-meeting-bot-google`.
 2. **Task Role:** Leave blank or select a suitable task role if your bot needs access to other AWS services.
 3. **Network Mode:** Select `awsvpc`.
 4. **Task Execution Role:** Create a new one with the necessary permissions.
 5. **Task Size:** Set the task size as needed.
 6. **Add Container:**
    - Click "Add container."
-   - **Container Name:** Enter `cuecard-google-bot`.
+   - **Container Name:** Enter `cuemeet-google-bot`.
    - **Image:** `<your_account_id>.dkr.ecr.<your_region>.amazonaws.com/<your_repository_name>:latest`
    - **Environment variables:**
      - Click "Add environment variable."
      - Add `ENVIRONMENT_NAME`
      - Add `DEBUG`
      - Add `HIGHLIGHT_PROJECT_ID`
+
+### 6.1 Sample ECS Task Definition
+```bash
+{
+    "taskDefinitionArn": "arn:aws:ecs:us-east-2:************:task-definition/cuemeet-meeting-bot-google-staging:**",
+    "containerDefinitions": [
+        {
+            "name": "cuemeet-google-bot",
+            "image": "************.dkr.ecr.us-east-2.amazonaws.com/cuemeet-google-bot:latest",
+            "cpu": 0,
+            "portMappings": [],
+            "essential": true,
+            "environment": [
+                {
+                    "name": "ENVIRONMENT_NAME",
+                    "value": "DEV"
+                },
+                {
+                    "name": "DEBUG",
+                    "value": "False"
+                },
+                {
+                    "name": "HIGHLIGHT_PROJECT_ID",
+                    "value": "************"
+                }
+            ],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "ulimits": [],
+            "logConfiguration": {
+                "logDriver": "awslogs",
+                "options": {
+                    "awslogs-group": "/ecs/cuemeet-meeting-bot-google-staging",
+                    "mode": "non-blocking",
+                    "awslogs-create-group": "true",
+                    "max-buffer-size": "25m",
+                    "awslogs-region": "us-east-2",
+                    "awslogs-stream-prefix": "ecs"
+                },
+                "secretOptions": []
+            },
+            "systemControls": []
+        }
+    ],
+    "family": "cuemeet-meeting-bot-google-staging",
+    "taskRoleArn": "arn:aws:iam::************:role/ecsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::************:role/ecsTaskExecutionRole",
+    "networkMode": "awsvpc",
+    "revision": 11,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "name": "ecs.capability.execution-role-awslogs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.ecr-auth"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.19"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.28"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
+            "name": "ecs.capability.execution-role-ecr-pull"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.29"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "cpu": "1024",
+    "memory": "2048",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "registeredAt": "",
+    "enableFaultInjection": false,
+    "tags": []
+}
+```
+Note: Each of the bot requires it's own task definition
+
 
 ### 7 Deployment Process
 1. **Code Commit:** Commit your code changes to the source repository.
